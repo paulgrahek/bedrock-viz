@@ -15,20 +15,20 @@ addons:
   apt:
     packages:
     - cmake
-    - gcc-9
-    - g++-9
+    - gcc-8
+    - g++-8
     - libxml2-dev
   homebrew:
     packages:
     - cmake
-    - gcc@9
+    - gcc@8
     - libpng
     update: true
 
 install:
 - if [ "$CXX" = "g++" ]; then
-    export CC=/usr/bin/gcc-9
-    export CXX=/usr/bin/g++-9
+    export CC=/usr/bin/gcc-8
+    export CXX=/usr/bin/g++-8
   fi
 - echo ${CC}
 - echo ${CXX}
