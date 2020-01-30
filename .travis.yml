@@ -9,7 +9,6 @@ os:
 env: 
 - BUILD_TYPE=Debug
 - BUILD_TYE=RelWithDebInfo
-- DBEDROCK_VIZ_BUILD_TESTS=ON
 
 addons:
   apt:
@@ -24,7 +23,7 @@ before_script:
 - mkdir build && cd build
 - export CC=/usr/bin/gcc-9
 - export CXX=/usr/bin/g++-9
-- cmake ..
+- cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
 - make
 
 script:
