@@ -5,8 +5,8 @@ compiler:
 - gcc
 os:
 - linux
-- osx
-#- windows
+#- osx
+- windows
 
 env: 
 - BUILD_TYPE=Debug
@@ -26,14 +26,29 @@ addons:
     - libpng
     update: true
 
-install:
-- if [ "$CXX" = "g++" ]; then
-    export CC="gcc-8" CXX="g++-8";
+before_install:
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    git clone https://github.com/Microsoft/vcpkg.git;
+    cd vcpkg
+    .\boostrap-vcpkg.bat
+    .\vcpkg integrate install
+    .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows
+    cd ..
+    choco install -y patch
   fi
-- echo ${CC}
-- echo ${CXX}
-- ${CXX} --version
-- cmake --version
+
+install:
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+
+  else
+    if [ "$CXX" = "g++" ]; then
+      export CC="gcc-8" CXX="g++-8";
+    fi
+    echo ${CC}
+    echo ${CXX}
+    ${CXX} --version
+    cmake --version
+  fi
 
 before_script:
 - patch -p0 < patches/leveldb-1.22.patch
