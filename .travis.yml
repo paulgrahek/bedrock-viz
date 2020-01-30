@@ -8,7 +8,7 @@ os:
 
 env: 
 - BUILD_TYPE=Debug
-- BUILD_TYE=RelWithDebInfo
+- BUILD_TYPE=RelWithDebInfo
 
 addons:
   apt:
@@ -21,8 +21,8 @@ addons:
 before_script:
 - patch -p0 < patches/leveldb-1.22.patch
 - mkdir build && cd build
-- export CC=/usr/bin/gcc-9
-- export CXX=/usr/bin/g++-9
+- export CC=/usr/bin/gcc
+- export CXX=/usr/bin/g++
 - cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
 - make
 
