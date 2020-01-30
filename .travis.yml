@@ -41,7 +41,7 @@ before_install:
 install:
 - |- 
     if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-  
+      echo "WIN10"
     else
       if [ "$CXX" = "g++" ]; then
         export CC="gcc-8" CXX="g++-8";
