@@ -5,6 +5,7 @@ compiler:
 - gcc
 os:
 - linux
+- osx
 
 env: 
 - BUILD_TYPE=Debug
@@ -17,12 +18,26 @@ addons:
     - gcc-9
     - g++-9
     - libxml2-dev
+  homebrew:
+    packages:
+    - cmake
+    - gcc@9
+    - libpng
+    update: true
+
+install:
+- if [ "$CXX" = "g++" ]; then
+    export CC=/usr/bin/gcc-9
+    export CXX=/usr/bin/g++-9
+  fi
+- echo ${CC}
+- echo ${CXX}
+- ${CXX} --version
+- cmake --version
 
 before_script:
 - patch -p0 < patches/leveldb-1.22.patch
 - mkdir build && cd build
-- export CC=/usr/bin/gcc-9
-- export CXX=/usr/bin/g++-9
 - cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
 - make
 
