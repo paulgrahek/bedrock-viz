@@ -6,7 +6,7 @@ compiler:
 os:
 - linux
 - osx
-- windows
+#- windows
 
 env: 
 - BUILD_TYPE=Debug
