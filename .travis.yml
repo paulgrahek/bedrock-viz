@@ -27,29 +27,29 @@ addons:
     update: true
 
 before_install:
-- |-
+- |- 
     if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-      git clone https://github.com/Microsoft/vcpkg.git
-      cd vcpkg
-      .\boostrap-vcpkg.bat
-      .\vcpkg integrate install
-      .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows
-      cd ..
-      choco install -y patch
+      git clone https://github.com/Microsoft/vcpkg.git;
+      cd vcpkg;
+      .\boostrap-vcpkg.bat;
+      .\vcpkg integrate install;
+      .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
+      cd ..;
+      choco install -y patch;
     fi
 
 install:
 - |- 
     if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-      
+  
     else
       if [ "$CXX" = "g++" ]; then
-        export CC="gcc-8" CXX="g++-8"
+        export CC="gcc-8" CXX="g++-8";
       fi
-      echo ${CC}
-      echo ${CXX}
-      ${CXX} --version
-      cmake --version
+      echo ${CC};
+      echo ${CXX};
+      ${CXX} --version;
+      cmake --version;
     fi
 
 before_script:
