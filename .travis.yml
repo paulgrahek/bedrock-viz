@@ -27,8 +27,8 @@ addons:
 
 install:
 - if [ "$CXX" = "g++" ]; then
-    export CC=/usr/bin/gcc-8
-    export CXX=/usr/bin/g++-8
+    export CC=/usr/bin/gcc-8;
+    export CXX=/usr/bin/g++-8;
   fi
 - echo ${CC}
 - echo ${CXX}
