@@ -27,7 +27,6 @@ addons:
     update: true
 
 install:
-- if [ "$TRAVIS_OS_NAME" = "" ];
 - if [ "$CXX" = "g++" ]; then
     export CC=/usr/bin/gcc-8;
     export CXX=/usr/bin/g++-8;
