@@ -1093,7 +1093,65 @@
       <blockvariant blockdata="0x5" name="Stairs, Stone, West (Upside-down)" spawnable="1" />
       <blockvariant blockdata="0x6" name="Stairs, Stone, South (Upside-down)" spawnable="1" />
       <blockvariant blockdata="0x7" name="Stairs, Stone, North (Upside-down)" spawnable="1" />
-    </block>    
+    </block>  
+    <block id="0x1b4" name="Standing Sign, Spruce" uname="minecraft:spruce_standing_sign" color=""/>
+    <block id="0x1b5" name="Wall Sign, Spruce" uname="minecraft:spruce_wall_sign" color=""/>
+    <block id="0x1b6" name="Smooth Stone" uname="minecraft:smooth_stone" color=""/>
+    <block id="0x1b7" name="Stairs, Red Nether Brick" uname="minecraft:red_nether_brick_stairs" color="" spawnable="0">
+      <blockvariant blockdata="0x0" name="Stairs, Red Nether Brick, East" />
+      <blockvariant blockdata="0x1" name="Stairs, Red Nether Brick, West" />
+      <blockvariant blockdata="0x2" name="Stairs, Red Nether Brick, South" />
+      <blockvariant blockdata="0x3" name="Stairs, Red Nether Brick, North" />
+      <blockvariant blockdata="0x4" name="Stairs, Red Nether Brick, East (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x5" name="Stairs, Red Nether Brick, West (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x6" name="Stairs, Red Nether Brick, South (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x7" name="Stairs, Red Nether Brick, North (Upside-down)" spawnable="1" />
+    </block> 
+    <block id="0x1b8" name="Stairs, Smooth Quartz" uname="minecraft:smooth_quartz_stairs" color="" spawnable="0">
+      <blockvariant blockdata="0x0" name="Stairs, Smooth Quartz, East" />
+      <blockvariant blockdata="0x1" name="Stairs, Smooth Quartz, West" />
+      <blockvariant blockdata="0x2" name="Stairs, Smooth Quartz, South" />
+      <blockvariant blockdata="0x3" name="Stairs, Smooth Quartz, North" />
+      <blockvariant blockdata="0x4" name="Stairs, Smooth Quartz, East (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x5" name="Stairs, Smooth Quartz, West (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x6" name="Stairs, Smooth Quartz, South (Upside-down)" spawnable="1" />
+      <blockvariant blockdata="0x7" name="Stairs, Smooth Quartz, North (Upside-down)" spawnable="1" />
+    </block> 
+    <block id="0x1b9" name="Standing Sign, Birch" uname="minecraft:birch_standing_sign" color=""/>
+    <block id="0x1ba" name="Wall Sign, Birch" uname="minecraft:birch_wall_sign" color=""/>
+    <block id="0x1bb" name="Standing Sign, Jungle" uname="minecraft:jungle_standing_sign" color=""/>
+    <block id="0x1bc" name="Wall Sign, Jungle" uname="minecraft:jungle_wall_sign" color=""/>
+    <block id="0x1bd" name="Standing Sign, Acadia" uname="minecraft:acadia_standing_sign" color=""/>
+    <block id="0x1be" name="Wall Sign, Acadia" uname="minecraft:acadia_wall_sign" color=""/>
+    <block id="0x1bf" name="Standing Sign, Dark Oak" uname="minecraft:darkoak_standing_sign" color=""/>
+    <block id="0x1c0" name="Wall Sign, Dark Oak" uname="minecraft:darkoak_wall_sign" color=""/>
+    <block id="0x1c1" name="Lectern" uname="minecraft:lectern" color=""/>
+    <block id="0x1c2" name="Grindstone" uname="minecraft:grindstone" color=""/>
+    <block id="0x1c3" name="Blast Furnace" uname="minecraft:blast_furnace" color=""/>
+    <block id="0x1c4" name="Stonecutter Block" uname="minecraft:stonecutter_block" color=""/>
+    <block id="0x1c5" name="Smoker" uname="minecraft:smoker" color=""/>
+    <block id="0x1c6" name="Lit Smoker" uname="minecraft:lit_smoker" color=""/>
+    <block id="0x1c7" name="Cartography Table" uname="minecraft:cartography_table" color=""/>
+    <block id="0x1c8" name="Fletching Table" uname="minecraft:fletching_table" color=""/>
+    <block id="0x1c9" name="Smithing Table" uname="minecraft:smithing_table" color=""/>
+    <block id="0x1ca" name="Barrel" uname="minecraft:barrel" color=""/>
+    <block id="0x1cb" name="Loom" uname="minecraft:loom" color=""/>
+    <block id="0x1cd" name="Bell" uname="minecraft:bell" color=""/>
+    <block id="0x1ce" name="Sweet Berry Bush" uname="minecraft:sweet_berry_bush" color=""/>
+    <block id="0x1cf" name="Lantern" uname="minecraft:lantern" color=""/>
+    <block id="0x1d0" name="Campfire" uname="minecraft:campfire" color=""/>
+    <block id="0x1d1" name="Lava Cauldron" uname="minecraft:lava_cauldron" color=""/>
+    <block id="0x1d2" name="Jigsaw" uname="minecraft:jigsaw" color=""/>
+    <block id="0x1d3" name="Wood" uname="minecraft:wood" color=""/>
+    <block id="0x1d4" name="Composter" uname="minecraft:composter" color=""/>
+    <block id="0x1d5" name="Lit Blast Furnace" uname="minecraft:lit_blast_furnace" color=""/>
+    <block id="0x1d6" name="Light Block" uname="minecraft:light_block" color=""/>
+    <block id="0x1d7" name="Wither Rose" uname="minecraft:wither_rose" color=""/>
+    <block id="0x1d8" name="Sticky Piston Head" uname="minecraft:stickypistonarmcollision" color=""/>
+    <block id="0x1d9" name="Bee Nest" uname="minecraft:bee_nest" color=""/>
+    <block id="0x1da" name="Beehive" uname="minecraft:beehive" color=""/>
+    <block id="0x1db" name="Honey Block" uname="minecraft:honey_block" color=""/>
+    <block id="0x1dc" name="Honeycomb Block" uname="minecraft:honeycomb_block" color=""/>
   </blocklist>
 
   <!--
@@ -1463,6 +1521,7 @@
     <item id="0x1AF" name="Door, Dark Oak" uname="minecraft:dark_oak_door" />
     <item id="0x1B0" name="Chorus Fruit" uname="minecraft:chorus_fruit" /> <!-- 0.17 -->
     <item id="0x1B1" name="Chorus Fruit, Popped" uname="minecraft:chorus_fruit_popped" /> <!-- 0.17 -->
+    <!-- 1B3, 1B4 unused -->
     <item id="0x1B5" name="Dragon Breath" uname="minecraft:dragon_breath" /> <!-- 0.17 -->
     <!-- todo parse potions -->
     <item id="0x1B6" name="Splash Potion" uname="minecraft:splash_potion"> <!-- *B -->
@@ -1506,7 +1565,8 @@
       <itemvariant extradata="0x25" name="Splash Potion of Turtle Master (0:20)"  />
       <itemvariant extradata="0x26" name="Splash Potion of Turtle Master (0:40)"  />
       <itemvariant extradata="0x27" name="Splash Potion of Turtle Master II (0:20)"  />
-    </item>    
+    </item>  
+    <!-- 1B7, 1B8 unused -->  
     <item id="0x1B9" name="Lingering Potion" uname="minecraft:lingering_potion"> <!-- *B --> <!-- 0.17 -->
       <!-- todo these are copied from splash, not checked yet -->
       <itemvariant extradata="0x00" name="Lingering Water Bottle"  />
@@ -1580,10 +1640,17 @@
     <item id="0x1D1" name="Nautilus Shell" uname="minecraft:nautilus_shell" />
     <item id="0x1D2" name="Apple, Enchanted" uname="minecraft:appleenchanted" />
     <item id="0x1D3" name="Heart of the Sea" uname="minecraft:heart_of_the_sea" />
-    <item id="0x1D4" name="Scute" uname="minecraft:scute" />
-    <!-- todo not sure about turtle_helmet -->
-    <item id="0x1D5" name="Turtle Shell" uname="minecraft:turtle_shell;minecraft:turtle_shell_piece;minecraft:turtle_helmet" />
+    <item id="0x1D4" name="Scute" uname="minecraft:turtle_shell_piece" />
+    <item id="0x1D5" name="Turtle Shell" uname="minecraft:turtle_helmet" />
     <item id="0x1D6" name="Phantom Membrane" uname="minecraft:phantom_membrane" />
+    <item id="0x1D7" name="Crossbow" uname="minecraft:crossbow"/>
+    <item id="0x1D8" name="Sign, Spruce" uname="minecraft:spruce_sign"/>
+    <item id="0x1D9" name="Sign, Birch" uname="minecraft:birch_sign"/>
+    <item id="0x1DA" name="Sign, Jungle" uname="minecraft:jungle_sign"/>
+    <item id="0x1DB" name="Sign, Acadia" uname="minecraft:acadia_sign"/>
+    <item id="0x1DC" name="Sign, Dark Oak" uname="minecraft:darkoak_sign"/>
+    <item id="0x1DD" name="Sweet Berries" uname="minecraft:sweet_berries"/>
+    <!-- 1DE-1F1 unused -->
     <item id="0x1F3" name="Salt" uname="minecraft:compound" />
     <item id="0x1F2" name="Camera"  uname="minecraft:camera"/> <!-- EDU -->
     <item id="0x1F4" name="Record, 13" uname="minecraft:record_13" />
@@ -1598,6 +1665,15 @@
     <item id="0x1FD" name="Record, Ward" uname="minecraft:record_ward" />
     <item id="0x1FE" name="Record, 11" uname="minecraft:record_11" />
     <item id="0x1FF" name="Record, Wait" uname="minecraft:record_wait" />
+    <!-- 200 unused -->
+    <item id="0x201" name="Shield" uname="minecraft:shield"/>
+    <!-- 202-2CF unused -->
+    <item id="0x2D0" name="Campfire" uname="minecraft:campfire"/>
+    <!-- 2D1-2DD unused -->
+    <item id="0x2DE" name="Suspicious Stew" uname="minecraft:suspicious_stew"/>
+    <!-- 2DF unused -->
+    <item id="0x2E0" name="Honeycomb" uname="minecraft:honeycomb"/>
+    <item id="0x2E1" name="Honey Bottle" uname="minecraft:honey_bottle"/>
   </itemlist>
 
   <!--
@@ -1684,6 +1760,7 @@
     <entity id="0x48" uname="minecraft:fireworks_rocket" name="Firework Rocket" />
     <entity id="0x49" uname="minecraft:thrown_trident" name="Trident" />
     <entity id="0x4A" uname="minecraft:turtle" name="Turtle" etype="P" />
+    <entity id="0x4B" uname="minecraft:cat" name="Cat" etype="P" />
     <entity id="0x4C" uname="minecraft:shulker_bullet" name="Shulker Bullet" />
     <entity id="0x4D" uname="minecraft:fishing_hook" name="Fishing Rod hook" />
     <entity id="0x4e" uname="minecraft:chalkboard" name="Chalkboard" /> <!-- EDU -->
@@ -1716,8 +1793,14 @@
     <entity id="0x6E" uname="minecraft:drowned" name="Drowned" etype="H" />
     <entity id="0x6F" uname="minecraft:tropicalfish" name="Tropical Fish" etype="P" />
     <entity id="0x70" uname="minecraft:cod" name="Cod" etype="P" />
-    <entity id="0x7A" uname="minecraft:cat" name="Cat" etype="P" />
-    <entity id="0x7B" uname="minecraft:panda" name="Panda" etype="P" />
+    <entity id="0x71" uname="minecraft:panda" name="Panda" etype="P" />
+    <entity id="0x72" uname="minecraft:pillager" name="Pillager" etype="H" />
+    <entity id="0x73" uname="minecraft:villager_v2" name="Villager" etype="P" />
+    <entity id="0x74" uname="minecraft:zombie_villager_v2" name="Zombie Villager" etype="H" />
+    <entity id="0x75" uname="minecraft:shield" name="Shield" etype="P" />
+    <entity id="0x76" uname="minecraft:wandering_trader" name="Wandering Trader" etype="P" />
+    <entity id="0x79" uname="minecraft:fox" name="Fox" etype="P" />
+    <entity id="0x7A" uname="minecraft:bee" name="Bee" etype="P" />
   </entitylist>
 
   <!--
