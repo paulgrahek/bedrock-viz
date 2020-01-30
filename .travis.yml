@@ -6,6 +6,7 @@ compiler:
 os:
 - linux
 - osx
+- windows
 
 env: 
 - BUILD_TYPE=Debug
@@ -26,6 +27,7 @@ addons:
     update: true
 
 install:
+- if [ "$TRAVIS_OS_NAME" = "" ];
 - if [ "$CXX" = "g++" ]; then
     export CC=/usr/bin/gcc-8;
     export CXX=/usr/bin/g++-8;
@@ -37,9 +39,10 @@ install:
 
 before_script:
 - patch -p0 < patches/leveldb-1.22.patch
-- mkdir build && cd build
+- mkdir -p build && cd build
 - cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
 - make
+- cd ..
 
 script:
 - cd build && ctest --verbose && cd ..
