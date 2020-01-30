@@ -14,15 +14,15 @@ addons:
   apt:
     packages:
     - cmake
-    - gcc
-    - g++
+    - gcc-9
+    - g++-9
     - libxml2-dev
 
 before_script:
 - patch -p0 < patches/leveldb-1.22.patch
 - mkdir build && cd build
-- export CC=/usr/bin/gcc
-- export CXX=/usr/bin/g++
+- export CC=/usr/bin/gcc-9
+- export CXX=/usr/bin/g++-9
 - cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
 - make
 
