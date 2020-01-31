@@ -30,9 +30,9 @@ before_install:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     git clone https://github.com/Microsoft/vcpkg.git;
     cd vcpkg;
-    .\boostrap-vcpkg.bat;
-    .\vcpkg integrate install;
-    .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
+    ./boostrap-vcpkg.bat;
+    ./vcpkg integrate install;
+    ./vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
     cd ..;
     choco install -y patch;
   fi
@@ -58,7 +58,7 @@ before_script:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     patch -p0 -i patches/leveldb-1.22.patch;
     mkdir build && cd build;
-    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake;
+    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON;
     msbuild bedrock-viz.sln;
     cd ..;
   fi
