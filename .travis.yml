@@ -1,5 +1,5 @@
 language: cpp
-dist: bionic
+dist: eoan
 
 compiler:
 - gcc
@@ -16,13 +16,13 @@ addons:
   apt:
     packages:
     - cmake
-    - gcc-8
-    - g++-8
+    - gcc-9
+    - g++-9
     - libxml2-dev
   homebrew:
     packages:
     - cmake
-    - gcc@8
+    - gcc@9
     - libpng
     update: true
 
@@ -44,7 +44,7 @@ install:
       echo "WIN10"
     else
       if [ "$CXX" = "g++" ]; then
-        export CC="gcc-8" CXX="g++-8";
+        export CC="gcc-9" CXX="g++-9";
       fi
       echo ${CC};
       echo ${CXX};
@@ -53,11 +53,17 @@ install:
     fi
 
 before_script:
-- patch -p0 < patches/leveldb-1.22.patch
-- mkdir -p build && cd build
-- cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..
-- make
-- cd ..
-
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    patch -p0 -i patches/leveldb-1.22.patch;
+    mkdir build && cd build;
+    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=vcpkg\scripts\buildsystems\vcpkg.cmake;
+    msbuild bedrock-viz.sln
+  else 
+    patch -p0 < patches/leveldb-1.22.patch;
+    mkdir -p build && cd build;
+    cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..;
+    make;
+    cd ..;
+  fi
 script:
 - cd build && ctest --verbose && cd ..
