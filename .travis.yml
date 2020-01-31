@@ -46,8 +46,13 @@ install:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     echo "WIN10";
   fi
-- if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+    export CC="/usr/bin/gcc-9" CXX="/usr/bin/g++-9";
+  fi
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CC="gcc-9" CXX="g++-9";
+  fi
+- if [ "$TRAVIS_OS_NAME" != "windows" ]; then 
     echo ${CC};
     echo ${CXX};
     ${CXX} --version;
