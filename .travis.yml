@@ -27,34 +27,34 @@ addons:
     update: true
 
 before_install:
-- |- 
-    if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-      git clone https://github.com/Microsoft/vcpkg.git;
-      cd vcpkg;
-      .\boostrap-vcpkg.bat;
-      .\vcpkg integrate install;
-      .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
-      cd ..;
-      choco install -y patch;
-    elif [ "$TRAVIS_OS_NAME" = "windows" ]; then 
-      sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
-      sudo apt-get -q update;
-      sudo apt-get -y install gcc-9;
-    fi
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    git clone https://github.com/Microsoft/vcpkg.git;
+    cd vcpkg;
+    .\boostrap-vcpkg.bat;
+    .\vcpkg integrate install;
+    .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
+    cd ..;
+    choco install -y patch;
+  fi
+- if [ "$TRAVIS_OS_NAME" != "windows" ]; then 
+    sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
+    sudo apt-get -q update;
+    sudo apt-get -y install gcc-9;
+  fi
 
 install:
-- |- 
-    if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-      echo "WIN10";
-    else
-      if [ "$CXX" = "g++" ]; then
-        export CC="gcc-9" CXX="g++-9";
-      fi
-      echo ${CC};
-      echo ${CXX};
-      ${CXX} --version;
-      cmake --version;
+- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    echo "WIN10";
+  fi
+- if [ "$TRAVIS_OS_NAME" != "windows" ]; then
+    if [ "$CXX" = "g++" ]; then
+      export CC="gcc-9" CXX="g++-9";
     fi
+    echo ${CC};
+    echo ${CXX};
+    ${CXX} --version;
+    cmake --version;
+  fi
 
 before_script:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
@@ -63,7 +63,8 @@ before_script:
     cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=..\vcpkg\scripts\buildsystems\vcpkg.cmake;
     msbuild bedrock-viz.sln;
     cd ..;
-  else 
+  fi
+- if [ "$TRAVIS_OS_NAME" != "windows" ]; then
     patch -p0 < patches/leveldb-1.22.patch;
     mkdir -p build && cd build;
     cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..;
@@ -71,4 +72,4 @@ before_script:
     cd ..;
   fi
 script:
-- cd build && ctest --verbose && cd ..
+- cd build && ctest -V && cd ..
