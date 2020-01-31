@@ -57,7 +57,7 @@ before_script:
     patch -p0 -i patches/leveldb-1.22.patch;
     mkdir build && cd build;
     cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=vcpkg\scripts\buildsystems\vcpkg.cmake;
-    msbuild bedrock-viz.sln
+    msbuild bedrock-viz.sln;
   else 
     patch -p0 < patches/leveldb-1.22.patch;
     mkdir -p build && cd build;
