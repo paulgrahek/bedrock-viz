@@ -36,10 +36,10 @@ before_install:
     cd ..;
     choco install -y patch;
   fi
-- if [ "$TRAVIS_OS_NAME" != "windows" ]; then 
+- if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
     sudo apt-get -q update;
-    sudo apt-get -y install gcc-9;
+    sudo apt-get -y install gcc-9 g++-9;
   fi
 
 install:
@@ -47,7 +47,7 @@ install:
     echo "WIN10";
   fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    export CC="/usr/bin/gcc-9" CXX="/usr/bin/g++-9";
+    export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9;
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CC="gcc-9" CXX="g++-9";
