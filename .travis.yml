@@ -40,7 +40,7 @@ install:
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export PATH="$(brew --prefix llvm)/bin:$PATH";
-    export CC="gcc-9" CXX="g++-9";
+    export CC="clang-9" CXX="clang++-9";
   fi
 # Check that correct GCC is used 
 - echo ${CC};
