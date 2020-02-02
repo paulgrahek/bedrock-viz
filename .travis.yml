@@ -6,7 +6,6 @@ compiler:
 os:
 - linux
 - osx
-- windows
 
 env: 
 - BUILD_TYPE=Debug
@@ -27,15 +26,6 @@ addons:
     update: true
 
 before_install:
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    git clone https://github.com/Microsoft/vcpkg.git;
-    cd vcpkg;
-    cmd /c .\boostrap-vcpkg.bat;
-    cmd /c .\vcpkg integrate install;
-    cmd /c .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
-    cd ..;
-    choco install -y patch visualstudio2019-workload-vctools;
-  fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
     sudo apt-get -q update;
@@ -43,36 +33,23 @@ before_install:
   fi
 
 install:
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    echo "WIN10";
-  fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9;
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export CC="gcc-9" CXX="g++-9";
   fi
-- if [ "$TRAVIS_OS_NAME" != "windows" ]; then 
-    echo ${CC};
-    echo ${CXX};
-    ${CXX} --version;
-    cmake --version;
-  fi
+- echo ${CC};
+- echo ${CXX};
+- ${CXX} --version;
+- cmake --version;
 
 before_script:
-- if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    patch -p0 -i patches/leveldb-1.22.patch;
-    mkdir build && cd build;
-    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -DCMAKE_TOOLCHAIN_FILE=../vcpkg/scripts/buildsystems/vcpkg.cmake -G "Visual Studio 16 2019" -A x64;
-    msbuild bedrock-viz.sln;
-    cd ..;
-  fi
-- if [ "$TRAVIS_OS_NAME" != "windows" ]; then
-    patch -p0 < patches/leveldb-1.22.patch;
-    mkdir -p build && cd build;
-    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON;
-    make;
-    cd ..;
-  fi
+- patch -p0 < patches/leveldb-1.22.patch;
+- mkdir -p build && cd build;
+- cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON;
+- make;
+- cd ..;
+
 script:
 - cd build && ctest -V && cd ..
