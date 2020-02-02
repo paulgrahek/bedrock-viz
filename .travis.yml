@@ -19,7 +19,9 @@ addons:
   homebrew:
     packages:
     - cmake
-    - gcc
+    - crc32c
+    - gcc@9
+    - llvm@9
     - libpng
     update: true
 
