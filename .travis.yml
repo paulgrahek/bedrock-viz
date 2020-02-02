@@ -20,8 +20,8 @@ addons:
     packages:
     - cmake
     - crc32c
-    - gcc@9
     - llvm@9
+    - gcc@9
     - libpng
     update: true
 
@@ -40,7 +40,7 @@ install:
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
     export PATH="$(brew --prefix llvm)/bin:$PATH";
-    export CC="clang-9" CXX="clang++-9";
+    export CC="gcc-9" CXX="g++-9";
   fi
 # Check that correct GCC is used 
 - echo ${CC};
