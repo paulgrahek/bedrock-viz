@@ -19,8 +19,7 @@ addons:
   homebrew:
     packages:
     - cmake
-    - gcc@9
-    - llvm
+    - gcc
     - libpng
     update: true
 
@@ -38,7 +37,7 @@ install:
     export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9;
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    export CC="clang" CXX="clang++";
+    export CC="gcc-9" CXX="g++-9";
   fi
 # Check that correct GCC is used 
 - echo ${CC};
