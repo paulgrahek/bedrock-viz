@@ -30,9 +30,9 @@ before_install:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     git clone https://github.com/Microsoft/vcpkg.git;
     cd vcpkg;
-    boostrap-vcpkg.bat;
-    vcpkg integrate install;
-    vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
+    powershell & .\boostrap-vcpkg.bat;
+    powershell & .\vcpkg integrate install;
+    powershell & .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
     cd ..;
     choco install -y patch visualstudio2019-workload-vctools;
   fi
