@@ -15,17 +15,17 @@ addons:
   apt:
     packages:
     - cmake
-    # - gcc-8
-    # - g++-8
     - libxml2-dev
   homebrew:
     packages:
     - cmake
     - gcc@9
+    - llvm
     - libpng
     update: true
 
 before_install:
+# Use latest GCC-9 from ubuntu-toolchain-r PPA
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
     sudo apt-get -q update;
@@ -33,12 +33,14 @@ before_install:
   fi
 
 install:
+# Set environment variables for C/C++ Compilers
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
     export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9;
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    export CC="gcc-9" CXX="g++-9";
+    export CC="clang" CXX="clang++";
   fi
+# Check that correct GCC is used 
 - echo ${CC};
 - echo ${CXX};
 - ${CXX} --version;
