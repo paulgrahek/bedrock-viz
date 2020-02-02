@@ -15,13 +15,13 @@ addons:
   apt:
     packages:
     - cmake
-    # - gcc-8
-    # - g++-8
+    - gcc-8
+    - g++-8
     - libxml2-dev
   homebrew:
     packages:
     - cmake
-    - gcc@9
+    - gcc@8
     - libpng
     update: true
 
@@ -29,15 +29,15 @@ before_install:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
     sudo apt-get -q update;
-    sudo apt-get -y install gcc-9 g++-9;
+    sudo apt-get -y install gcc-8 g++-8;
   fi
 
 install:
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    export CC=/usr/bin/gcc-9 CXX=/usr/bin/g++-9;
+    export CC=/usr/bin/gcc-8 CXX=/usr/bin/g++-8;
   fi
 - if [ "$TRAVIS_OS_NAME" = "osx" ]; then
-    export CC="gcc-9" CXX="g++-9";
+    export CC="gcc-8" CXX="g++-8";
   fi
 - echo ${CC};
 - echo ${CXX};
