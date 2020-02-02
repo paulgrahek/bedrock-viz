@@ -30,11 +30,11 @@ before_install:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     git clone https://github.com/Microsoft/vcpkg.git;
     cd vcpkg;
-    ./boostrap-vcpkg.bat;
-    ./vcpkg integrate install;
-    ./vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
+    .\boostrap-vcpkg.bat;
+    .\vcpkg integrate install;
+    .\vckpg install libpng:x64-windows zlib:x64-windows libxml2:x64-windows;
     cd ..;
-    choco install -y patch;
+    choco install -y patch visualstudio2019-workload-vctools;
   fi
 - if [ "$TRAVIS_OS_NAME" = "linux" ]; then 
     sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
@@ -63,14 +63,14 @@ before_script:
 - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     patch -p0 -i patches/leveldb-1.22.patch;
     mkdir build && cd build;
-    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON;
+    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON -G "Visual Studio 16 2019" -A x64;
     msbuild bedrock-viz.sln;
     cd ..;
   fi
 - if [ "$TRAVIS_OS_NAME" != "windows" ]; then
     patch -p0 < patches/leveldb-1.22.patch;
     mkdir -p build && cd build;
-    cmake -DBEDROCK_VIZ_BUILD_TESTS=ON ..;
+    cmake .. -DBEDROCK_VIZ_BUILD_TESTS=ON;
     make;
     cd ..;
   fi
