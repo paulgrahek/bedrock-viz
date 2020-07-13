@@ -45,7 +45,7 @@ jobs:
         lcov --remove coverage.info '*/third_party/*' --output-file coverage.info
 
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action
       with: 
         file: ./coverage.info
         env_vars: OS
