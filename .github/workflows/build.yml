@@ -39,8 +39,8 @@ jobs:
 
     - name: Generate Coverage Report
       run: | 
-        lcov --capture --directory build --ouput-file coverage.info
-        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+        lcov --capture --directory build --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' '*/third_party/*' --output-file coverage.info
         lcov --list coverage.info 
 
     - name: Upload coverage to Codecov
