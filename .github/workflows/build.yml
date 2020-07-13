@@ -35,7 +35,7 @@ jobs:
 
     - name: Test
       run: |
-        ./build/example_test
+        ./build/example_test 
 
     - name: Generate Coverage Report
       continue-on-error: true

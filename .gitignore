@@ -41,3 +41,6 @@ cmake-build-*/
 
 # VSCode
 .vscode/
+
+#config.h
+include/config.h
