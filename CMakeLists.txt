@@ -21,7 +21,7 @@ if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_link_libraries(coverage_config INTERFACE --coverage)
 endif()
 
-configure_file(${PROJECT_SOURCE_DIR}/include/config.h.in ${PROJECT_SOURCE_DIR}/include/config.h)
+configure_file(include/config.h.in config.h)
 
 file(GLOB_RECURSE SRC_FILES src/*.cc)
 list(FILTER SRC_FILES EXCLUDE REGEX ".*/main.cc$")
@@ -82,6 +82,8 @@ file(COPY static DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(${BIN_NAME} src/main.cc)
 target_link_libraries(${BIN_NAME} PRIVATE ${LIB_NAME})
+target_include_directories(${BIN_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
 install(TARGETS ${BIN_NAME} DESTINATION bin)
 install(DIRECTORY data/ DESTINATION share/bedrock-viz/data)
 install(DIRECTORY static/ DESTINATION share/bedrock-viz/static)
@@ -119,6 +121,8 @@ if(BUILD_TESTS)
       # GCC requires -lstdc++fs to use <filesystem>
       target_link_libraries("${test_target_name}" stdc++fs)
     endif()
+
+    target_include_directories(${test_target_name} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
     add_test(NAME "${test_target_name}" COMMAND "${test_target_name}")
   endfunction(viz_test)
