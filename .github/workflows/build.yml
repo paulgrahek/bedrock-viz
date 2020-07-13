@@ -38,7 +38,6 @@ jobs:
         ./build/example_test 
 
     - name: Generate Coverage Report
-      continue-on-error: true
       run: | 
         lcov --capture --directory build --output-file coverage.info
         lcov --remove coverage.info '/usr/*' '*/third_party/*' '*/tests/*' --output-file coverage.info
