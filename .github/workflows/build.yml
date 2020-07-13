@@ -19,6 +19,8 @@ jobs:
       run: |
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install libpng++-dev zlib1g-dev g++-8 libboost-program-options-dev gcov lcov
+        g++ --version
+        gcov --version
     
     - name: Patch libraries
       run: |
