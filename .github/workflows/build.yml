@@ -18,7 +18,7 @@ jobs:
     - name: Install requirements
       run: |
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install libpng++-dev zlib1g-dev g++-8 libboost-program-options-dev lcov
+        sudo -E apt-get -qq install libpng++-dev zlib1g-dev g++-8 libboost-program-options-dev gcov-8 lcov
     
     - name: Patch libraries
       run: |
