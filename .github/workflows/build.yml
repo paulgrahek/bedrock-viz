@@ -50,6 +50,7 @@ jobs:
         file: ./coverage.info
         env_vars: OS
         name: codecov-umbrella
+        fail_ci_if_error: true
 
   macOS_10_15:
     runs-on: macos-10.15
