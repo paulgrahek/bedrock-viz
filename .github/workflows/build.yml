@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ master ]
+    branches: [ * ]
   pull_request:
     branches: [ master ]
 
@@ -32,6 +32,23 @@ jobs:
         export CXX=/usr/bin/g++-8
         cmake ..
         make
+
+    - name: Test
+      run: |
+        ./build/example_test
+
+    - name: Generate Coverage Report
+      run: | 
+        lcov --capture --directory build --ouput-file coverage.info
+        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+        lcov --list coverage.info 
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with: 
+        file: ./coverage.info
+        env_vars: OS
+        name: codecov-umbrella
 
   macOS_10_15:
     runs-on: macos-10.15
