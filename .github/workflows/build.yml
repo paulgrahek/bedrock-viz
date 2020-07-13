@@ -22,7 +22,8 @@ jobs:
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 90
         sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 90
         sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-8 90
-
+        g++ --version
+        gcov --version
     
     - name: Patch libraries
       run: |
@@ -34,8 +35,6 @@ jobs:
         mkdir build && cd build
         export CC=/usr/bin/gcc-8
         export CXX=/usr/bin/g++-8
-        g++ --version
-        gcov --version
         cmake -DBUILD_TESTS=ON -DCODE_COVERAGE=ON ..
         make
 
