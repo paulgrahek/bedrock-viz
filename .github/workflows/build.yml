@@ -41,7 +41,6 @@ jobs:
       run: | 
         lcov --capture --directory build --output-file coverage.info
         lcov --remove coverage.info '/usr/*' '*/third_party/*' --output-file coverage.info
-        lcov --list coverage.info 
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
