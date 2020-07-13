@@ -1,10 +1,10 @@
 name: Build
 
 on:
-  push
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   Ubuntu_18_04:
@@ -19,6 +19,7 @@ jobs:
       run: |
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install libpng++-dev zlib1g-dev g++-8 libboost-program-options-dev wget lcov libjson-perl libperlio-gzip-perl
+        # LCOV 1.13 has some issues with parsing gcc 8+ gcda files
         wget http://archive.ubuntu.com/ubuntu/pool/universe/l/lcov/lcov_1.14-2_all.deb
         sudo dpkg -i lcov_1.14-2_all.deb 
         sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 90
@@ -55,8 +56,6 @@ jobs:
       uses: codecov/codecov-action@v1
       with: 
         file: coverage.info
-        name: codecov-umbrella
-        fail_ci_if_error: true
 
   macOS_10_15:
     runs-on: macos-10.15
