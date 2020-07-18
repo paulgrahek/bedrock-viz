@@ -56,7 +56,6 @@ jobs:
         curl -s https://report.ci/upload.py | python3 - --include='*.xml' --framework=gtest
     
     - name: Generate Coverage Report
-      continue-on-error: true
       run: | 
         lcov --base-directory . --directory build -c -o coverage.info
         lcov --remove coverage.info '/usr/*' '*/third_party/*' '*/tests/*' --output-file coverage.info
