@@ -54,6 +54,7 @@ jobs:
       env: 
         CHECK_RUN_REPORTER_LABEL: 'Test Results'
         CHECK_RUN_REPORTER_REPORT: "*.xml"
+        CHECK_RUN_REPORTER_TOKEN: "${CHECK_RUN_REPORTER_TOKEN}"
       
     - name: Generate Coverage Report
       continue-on-error: true
