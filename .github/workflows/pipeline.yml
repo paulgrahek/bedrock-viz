@@ -51,6 +51,7 @@ jobs:
 
     - name: Upload Test Report
       uses: check-run-reporter/action@master
+      continue-on-error: true
       env: 
         CHECK_RUN_REPORTER_LABEL: 'Test Results'
         CHECK_RUN_REPORTER_REPORT: "*.xml"
