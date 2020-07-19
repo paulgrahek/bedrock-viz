@@ -45,9 +45,9 @@ jobs:
     - name: Test
       continue-on-error: true
       run: |
-        ./build/bedrock-viz-test --gtest_output="xml:unittests.xml" --gtest_filter="Unit*"
-        ./build/bedrock-viz-test --gtest_output="xml:integrationtests.xml" --gtest_filter="Integration*"
-        ./build/bedrock-viz-test --gtest_output="xml:ungroupedtests.xml" --gtest_filter="-Unit*:Integration*"
+        ./build/bedrock-viz-test --gtest_output="xml:unittests.xml" --gtest_filter="Unit*:*.Unit*"
+        ./build/bedrock-viz-test --gtest_output="xml:integrationtests.xml" --gtest_filter="Integration*:*.Integration*"
+        ./build/bedrock-viz-test --gtest_output="xml:ungroupedtests.xml" --gtest_filter="-Unit*:*.Unit*:Integration*:*.Integration*"
 
     - name: Upload Test Report
       env:
