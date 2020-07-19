@@ -1,4 +1,5 @@
 #include "xml/load_item.h"
+#include "minecraft/v2/item.h"
 
 #include <gtest/gtest.h>
 #include <iostream>
@@ -9,8 +10,9 @@ class LoadItemTest : public ::testing::Test {
 protected:
     static pugi::xml_document itemList;
 
-    virtual void TearDown() {
+    void TearDown() override {
         itemList.remove_children();
+        Item::clearList();
     }
 };
 
@@ -20,6 +22,7 @@ TEST_F(LoadItemTest, UnitAddItem) {
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
+    item.append_attribute("uname").set_value("minecraft:arrow");
     auto variant = item.append_child("itemvariant");
     variant.append_attribute("name").set_value("Arrow");
     variant.append_attribute("extradata").set_value(0x0);
@@ -73,8 +76,8 @@ TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoName){
 
 TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoExtraData){
     auto item = itemList.append_child("item");
-    item.append_attribute("id").set_value(0x100);
-    item.append_attribute("name").set_value("Iron Shovel");
+    item.append_attribute("id").set_value(0x106);
+    item.append_attribute("name").set_value("Arrow");
     auto variant = item.append_child("itemvariant");
     variant.append_attribute("name").set_value("Arrow");
     variant.append_attribute("extradata").set_value("");
@@ -86,8 +89,8 @@ TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoExtraData){
 
 TEST_F(LoadItemTest, UnitTryAddItemDuplicateVariant){
     auto item = itemList.append_child("item");
-    item.append_attribute("id").set_value(0x100);
-    item.append_attribute("name").set_value("Iron Shovel");
+    item.append_attribute("id").set_value(0x106);
+    item.append_attribute("name").set_value("Arrow");
     auto variant = item.append_child("itemvariant");
     variant.append_attribute("name").set_value("Arrow");
     variant.append_attribute("extradata").set_value(0x0);
@@ -95,5 +98,5 @@ TEST_F(LoadItemTest, UnitTryAddItemDuplicateVariant){
 
     int load_item_ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(load_item_ret,0);
 }
