@@ -18,11 +18,24 @@ protected:
 
 pugi::xml_document LoadEntityTest::entList;
 
-TEST_F(LoadEntityTest, UnitAdd) {
+TEST_F(LoadEntityTest, UnitAddHostile) {
+    auto ent = entList.append_child("entity");
+    ent.append_attribute("id").set_value(0x20);
+    ent.append_attribute("name").set_value("Zombie");
+    ent.append_attribute("uname").set_value("minecraft:zombie");
+    ent.append_attribute("etype").set_value(int(Entity::EType::H));
+
+    int ret = load_entity(entList);
+    
+    ASSERT_EQ(ret,0);
+}
+
+TEST_F(LoadEntityTest, UnitAddPassive) {
     auto ent = entList.append_child("entity");
     ent.append_attribute("id").set_value(0x1d);
     ent.append_attribute("name").set_value("Llama");
     ent.append_attribute("uname").set_value("minecraft:llama");
+    ent.append_attribute("etype").set_value(int(Entity::EType::P));
     auto variant = ent.append_child("entityvariant");
     variant.append_attribute("name").set_value("Llama, Creamy");
     variant.append_attribute("extradata").set_value(0x0);
@@ -98,5 +111,5 @@ TEST_F(LoadEntityTest, UnitAddTryDuplicateVariant){
 
     int ret = load_entity(entList);
     
-    ASSERT_EQ(ret,0);
+    ASSERT_EQ(ret,-1);
 }

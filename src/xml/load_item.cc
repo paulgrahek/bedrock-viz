@@ -43,6 +43,7 @@ namespace mcpe_viz
                 if (variant == nullptr) {
                     log::error("add item variant failed(name={}, data={})",
                         var_name, extradata);
+                    return -1;
                 }
             }
         }

@@ -98,5 +98,5 @@ TEST_F(LoadItemTest, UnitAddTryDuplicateVariant){
 
     int ret = load_item(itemList);
     
-    ASSERT_EQ(ret,0);
+    ASSERT_EQ(ret,-1);
 }
