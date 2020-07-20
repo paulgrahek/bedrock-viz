@@ -18,7 +18,7 @@ protected:
 
 pugi::xml_document LoadItemTest::itemList;
 
-TEST_F(LoadItemTest, UnitAddItem) {
+TEST_F(LoadItemTest, UnitAdd) {
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
@@ -27,18 +27,18 @@ TEST_F(LoadItemTest, UnitAddItem) {
     variant.append_attribute("name").set_value("Arrow");
     variant.append_attribute("extradata").set_value(0x0);
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,0);
+    ASSERT_EQ(ret,0);
 }
 
 TEST_F(LoadItemTest, UnitTryAddNoId){
     auto item = itemList.append_child("item");
     item.append_attribute("id");
     
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(ret,-1);
 }
 
 TEST_F(LoadItemTest, UnitTryAddNoName){
@@ -46,35 +46,35 @@ TEST_F(LoadItemTest, UnitTryAddNoName){
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name");
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(ret,-1);
 }
 
-TEST_F(LoadItemTest, UnitTryAddItemDuplicate) {
+TEST_F(LoadItemTest, UnitTryAddDuplicate) {
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
     itemList.append_copy(item);
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(ret,-1);
 }
 
-TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoName){
+TEST_F(LoadItemTest, UnitAddTryVariantNoName){
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
     auto variant = item.append_child("itemvariant");
     variant.append_attribute("name").set_value("");
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(ret,-1);
 }
 
-TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoExtraData){
+TEST_F(LoadItemTest, UnitAddTryVariantNoExtraData){
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
@@ -82,12 +82,12 @@ TEST_F(LoadItemTest, UnitTryAddItemBadVariantNoExtraData){
     variant.append_attribute("name").set_value("Arrow");
     variant.append_attribute("extradata").set_value("");
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,-1);
+    ASSERT_EQ(ret,-1);
 }
 
-TEST_F(LoadItemTest, UnitTryAddItemDuplicateVariant){
+TEST_F(LoadItemTest, UnitAddTryDuplicateVariant){
     auto item = itemList.append_child("item");
     item.append_attribute("id").set_value(0x106);
     item.append_attribute("name").set_value("Arrow");
@@ -96,7 +96,7 @@ TEST_F(LoadItemTest, UnitTryAddItemDuplicateVariant){
     variant.append_attribute("extradata").set_value(0x0);
     item.append_copy(variant);
 
-    int load_item_ret = load_item(itemList);
+    int ret = load_item(itemList);
     
-    ASSERT_EQ(load_item_ret,0);
+    ASSERT_EQ(ret,0);
 }
